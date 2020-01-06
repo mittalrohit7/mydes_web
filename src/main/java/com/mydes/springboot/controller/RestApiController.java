@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.mydes.springboot.model.User;
@@ -23,6 +24,9 @@ import com.mydes.springboot.util.CustomErrorType;
 @RequestMapping("/api")
 public class RestApiController {
 
+    @Autowired
+    private RestTemplate restTemplate;
+    
 	public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
 
 	@Autowired
@@ -30,6 +34,12 @@ public class RestApiController {
 
 	// -------------------Retrieve All Users---------------------------------------------
 
+	@RequestMapping(value = "/otherservice/", method = RequestMethod.GET)
+	public ResponseEntity<String> otherservice() {
+		 String url = "http://localhost:8081/endpointtest";
+		 return restTemplate.getForEntity(url, String.class);
+	}
+	
 	@RequestMapping(value = "/user/", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> listAllUsers() {
 		List<User> users = userService.findAllUsers();
