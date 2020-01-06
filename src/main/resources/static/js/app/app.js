@@ -1,8 +1,8 @@
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
-    BASE: 'http://localhost:8080/mydesWeb',
-    USER_SERVICE_API : 'http://localhost:8080/mydesWeb/api/user/'
+    BASE: '/mydesWeb',
+    USER_SERVICE_API : '/mydesWeb/api/user/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
