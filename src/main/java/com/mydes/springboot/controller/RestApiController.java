@@ -37,7 +37,7 @@ public class RestApiController {
 	@RequestMapping(value = "/otherservice/", method = RequestMethod.GET)
 	public ResponseEntity<String> otherservice() {
 	
-		 String url = "http://test:8080/endpointtest";
+		 String url = "https://test:8080/endpointtest";
 			logger.info("Calling Other with url {}", url);
 		 return restTemplate.getForEntity(url, String.class);
 	}
