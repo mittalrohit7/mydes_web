@@ -27,6 +27,9 @@ public class RestApiController {
     @Autowired
     private RestTemplate restTemplate;
     
+   
+    
+    
 	public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
 
 	@Autowired
@@ -36,8 +39,13 @@ public class RestApiController {
 
 	@RequestMapping(value = "/otherservice/", method = RequestMethod.GET)
 	public ResponseEntity<String> otherservice() {
-	
-		 String url = "http://localhost:8081/endpointtest";
+		String url=null;
+		if(System.getenv("DEMO_URL") != null)
+		{
+			url=System.getenv("DEMO_URL");
+		}else {
+			url="https://localhost:8081/endpointtest";
+		}
 			logger.info("Calling Other with url {}", url);
 		 return restTemplate.getForEntity(url, String.class);
 	}
