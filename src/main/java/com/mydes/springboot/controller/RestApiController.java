@@ -44,7 +44,7 @@ public class RestApiController {
 		{
 			url=System.getenv("DEMO_URL");
 		}else {
-			url="https://localhost:8081/endpointtest";
+			url="http://localhost:8081/endpointtest";
 		}
 	
 		 //String url = "https://test:8080/endpointtest";
