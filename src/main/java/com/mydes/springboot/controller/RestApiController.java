@@ -46,7 +46,7 @@ public class RestApiController {
 		}else {
 			url="http://localhost:8081/endpointtest";
 		}
-	
+	System.out.println("testing nee branch commit");
 		 //String url = "https://test:8080/endpointtest";
 			logger.info("Calling Other with url {}", url);
 		 return restTemplate.getForEntity(url, String.class);
